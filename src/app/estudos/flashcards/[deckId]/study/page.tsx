@@ -9,7 +9,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { getFlashcardsAction } from '@/app/estudos/flashcards/actions';
 import { QUERY_KEYS } from '@/hooks/useFlashcards';
 
-type PageProps = {
+type Props = {
   params: {
     deckId: string;
   };
@@ -31,7 +31,7 @@ function CardSkeleton() {
   );
 }
 
-export default function StudyPage({ params }: PageProps) {
+export default function StudyPage({ params }: Props) {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [currentIndex, setCurrentIndex] = useState(0);
