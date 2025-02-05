@@ -9,11 +9,12 @@ import { useQueryClient } from '@tanstack/react-query';
 import { getFlashcardsAction } from '@/app/estudos/flashcards/actions';
 import { QUERY_KEYS } from '@/hooks/useFlashcards';
 
-type Props = {
+interface PageProps {
   params: {
     deckId: string;
   };
-};
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
 // Componente de Skeleton para o card
 function CardSkeleton() {
@@ -31,7 +32,7 @@ function CardSkeleton() {
   );
 }
 
-export default function StudyPage({ params }: Props) {
+export default function StudyPage({ params }: PageProps) {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [currentIndex, setCurrentIndex] = useState(0);

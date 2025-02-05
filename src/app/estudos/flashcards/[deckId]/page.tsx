@@ -3,13 +3,14 @@ import { FlashcardsLayout } from '../components/FlashcardsLayout';
 import { CreateFlashcardButton } from '../components/CreateFlashcardButton';
 import { getDeckAction } from '../actions';
 
-type Props = {
+interface PageProps {
   params: {
     deckId: string;
   };
-};
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const response = await getDeckAction(params.deckId);
   const deck = response.data;
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function DeckPage({ params }: Props) {
+export default async function DeckPage({ params }: PageProps) {
   const response = await getDeckAction(params.deckId);
   const deck = response.data;
 
