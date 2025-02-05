@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Genoma PWA
 
-## Getting Started
+Plataforma de estudos inteligente com simulados, flashcards e comunidade.
 
-First, run the development server:
+## Tecnologias
 
+- Next.js 14
+- TypeScript
+- TailwindCSS
+- SQL Server
+- React Query
+- Shadcn/UI
+
+## Pré-requisitos
+
+- Node.js 18+
+- NPM 8+
+- SQL Server (Azure)
+
+## Configuração
+
+1. Clone o repositório
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/seu-usuario/genoma-pwa.git
+cd genoma-pwa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configure as variáveis de ambiente
+```bash
+cp .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Execute o projeto em desenvolvimento
+```bash
+npm run dev
+```
 
-## Learn More
+## Scripts Disponíveis
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria a build de produção
+- `npm run start` - Inicia o servidor de produção
+- `npm run lint` - Executa o linter
+- `npm run db:check` - Verifica as tabelas do banco
+- `npm run db:create` - Cria as tabelas do banco
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estrutura do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  ├── app/           # Rotas e páginas
+  ├── components/    # Componentes React
+  ├── hooks/         # Custom hooks
+  ├── lib/          # Utilitários e configurações
+  ├── providers/    # Providers React
+  └── db/           # Configuração do banco de dados
+```
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto está configurado para deploy na Vercel com integração contínua.

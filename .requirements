@@ -1,0 +1,147 @@
+1. Requisitos Funcionais
+
+1.1. Home
+Exibir avisos da comunidade.
+Mostrar estatísticas de desempenho:
+Acertos em simulados.
+Horas estudadas.
+Heatmap Streak (dias consecutivos estudando).
+Metas de estudo.
+1.2. Estudos
+
+Simulados
+Criar, resolver e compartilhar simulados.
+Limites de criação:
+Free: 5 simulados/mês com 20 questões cada.
+Premium: 30 simulados/mês.
+Adicionar simulados públicos à biblioteca pessoal.
+Exibir ranking de melhores simulados (baseado em likes).
+
+Flashcards
+Criar, visualizar e compartilhar flashcards.
+Limites de criação:
+Free: 5 decks/mês com até 10 flashcards cada.
+Premium: Ilimitado.
+Adicionar flashcards públicos à biblioteca pessoal.
+
+
+1.3. Biblioteca de Estudos (Ambiente Virtual)
+Acessar uma biblioteca pública de estudos.
+Criar uma biblioteca particular (usuários premium).
+Convidar usuários para bibliotecas particulares.
+Sistema de chat integrado via Matrix.
+
+
+1.4. Comunidade
+Fóruns públicos de dúvidas.
+Simulados e flashcards públicos.
+Ambiente para discussão e compartilhamento de materiais.
+
+
+1.6. Genoma Admin
+Enviar avisos para a comunidade.
+Moderar chats.
+Adicionar simulados e flashcards públicos.
+Banir usuários.
+Acesso a todas as funcionalidades da plataforma.
+
+2. Requisitos Não Funcionais
+2.1. Arquitetura e Tecnologias
+Front-end: React.js com Next.js (PWA).
+Back-end: Next.js API Routes (Node.js).
+Banco de Dados: SQL da Azure for Students (32GB).
+Armazenamento de Arquivos: Azure Storage (para imagens e arquivos).
+Autenticação: Auth0.
+Chat: Matrix.org.
+2.2. Segurança e Acesso
+Apenas usuários autenticados podem acessar funcionalidades restritas.
+Usuários premium possuem privilégios adicionais.
+Administração centralizada para moderação e avisos.
+2.3. Performance e Escalabilidade
+Uso de PWA para melhor experiência offline.
+Banco de dados SQL otimizado para alto desempenho.
+Armazenamento em nuvem para arquivos pesados.
+2.4. Experiência do Usuário
+Interface moderna e intuitiva.
+Design com temática de Genoma/DNA.
+Modo escuro/claro.
+
+
+
+
+🎨 Prompt UX/UI para o Genoma (PWA de Estudos)
+Objetivo: Criar um design moderno, interativo e intuitivo para um ambiente de estudos. A identidade visual deve refletir tecnologia, foco, e comunidade, incorporando a paleta de cores da logo.
+
+🎯 Diretrizes de Design:
+✅ Paleta de Cores:
+
+Usar as cores da logo (tons de azul, roxo e lilás).
+Fundo degradê ou translúcido para dar um toque futurista.
+Cores secundárias suaves para evitar cansaço visual durante longas sessões de estudo.
+✅ Tipografia:
+
+Fonte moderna e minimalista (ex: Inter, Poppins, Lato).
+Títulos em bold, mas sem poluir o layout.
+Textos devem ser fáceis de ler, com bom espaçamento.
+✅ Componentes Visuais:
+
+Botões arredondados e intuitivos (com efeitos de hover/transição suaves).
+Ícones minimalistas, de fácil reconhecimento.
+Cards com sombras suaves para destacar conteúdos.
+✅ Tema e Estética:
+
+Modo Claro e Escuro para conforto visual.
+Design modular, como blocos organizados (painéis e cards).
+Elementos inspirados em DNA/Genoma, como linhas fluidas, redes interligadas ou formas orgânicas sutis.
+Animações suaves para navegação mais fluida e interativa.
+📌 Estrutura de Telas (Wireframe Básico)
+1️⃣ Home (Dashboard)
+📌 Elementos principais:
+
+Estatísticas de estudo: Horas estudadas, acertos, ranking.
+Heatmap Streak: Mostrar sequência de dias estudados.
+Metas personalizadas: Barras de progresso.
+Feed interativo: Postagens de estudo, simulados compartilhados.
+🎨 Design:
+
+Cards dinâmicos e interativos.
+Gráficos modernos (circulares, barras, heatmaps).
+Botões de acesso rápido para estudos, biblioteca e comunidade.
+2️⃣ Estudos
+📌 Elementos principais:
+
+Seção de Simulados e Flashcards (com cards grandes e opção de favoritar).
+Exibição de simulados públicos mais curtidos.
+Modo de estudo imersivo (fundo escuro e foco total na questão).
+🎨 Design:
+
+Cards com efeito "flip" para flashcards.
+Temporizador minimalista.
+Opções de filtro para organizar estudos.
+3️⃣ Biblioteca de Estudos (Ambiente Virtual)
+📌 Elementos principais:
+
+Mapa interativo: Usuários podem entrar em "salas" e sentar em "mesas virtuais".
+Avatares personalizados para dar um toque social.
+Chat via Matrix.org embutido.
+🎨 Design:
+
+Ambientes 3D estilizados ou 2D minimalista.
+Espaços organizados com mesas e cadeiras, simulando uma biblioteca real.
+Ícones interativos para indicar usuários online.
+4️⃣ Comunidade
+📌 Elementos principais:
+
+Fórum de perguntas e respostas.
+Sistema de curtidas e votos.
+Feed de materiais compartilhados.
+🎨 Design:
+
+Cards empilháveis estilo Reddit.
+Chat lateral para dúvidas rápidas.
+Efeitos visuais para destacar posts populares.
+🔥 Extras (Animações e Microinterações)
+✅ Animações suaves: Transições entre telas sem cortes bruscos.
+✅ Hover effects: Pequenos destaques ao passar o mouse sobre botões e cards.
+✅ Progress Bar animada: Para mostrar avanço nos estudos.
+

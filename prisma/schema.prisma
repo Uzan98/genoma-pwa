@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["microsoftSqlServer"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de Usuário
+model User {
+  id            String    @id @default(uuid()) @db.NVarChar(255)
+  name          String    @db.NVarChar(255)
+  email         String    @unique @db.NVarChar(255)
+  password      String    @db.NVarChar(255)
+  createdAt     DateTime  @default(now()) @db.DateTime2
+  updatedAt     DateTime  @updatedAt @db.DateTime2
+  studyHours    StudyHour[]
+  simulados     Simulado[]
+  simuladoAttempts SimuladoAttempt[]
+
+  @@map("User")
+}
+
+// Registro de Horas de Estudo
+model StudyHour {
+  id        String   @id @default(uuid()) @db.NVarChar(255)
+  userId    String   @db.NVarChar(255)
+  date      DateTime @db.DateTime2
+  hours     Float    @db.Float
+  subject   String   @db.NVarChar(255)
+  createdAt DateTime @default(now()) @db.DateTime2
+  user      User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("StudyHour")
+}
+
+// Simulados
+model Simulado {
+  id          String   @id @default(uuid()) @db.NVarChar(255)
+  userId      String   @db.NVarChar(255)
+  title       String   @db.NVarChar(255)
+  description String   @db.NVarChar(1000)
+  time        Int      @db.Int
+  isPublic    Boolean  @default(false)
+  createdAt   DateTime @default(now()) @db.DateTime2
+  updatedAt   DateTime @updatedAt @db.DateTime2
+  user        User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  questions   Question[]
+  attempts    SimuladoAttempt[]
+
+  @@map("Simulado")
+}
+
+// Questões do Simulado
+model Question {
+  id          String   @id @default(uuid()) @db.NVarChar(255)
+  simuladoId  String   @db.NVarChar(255)
+  statement   String   @db.NVarChar(2000)
+  alternatives Alternative[]
+  correctAlternative Int @db.Int
+  createdAt   DateTime @default(now()) @db.DateTime2
+  updatedAt   DateTime @updatedAt @db.DateTime2
+  simulado    Simulado @relation(fields: [simuladoId], references: [id], onDelete: Cascade)
+  answers     Answer[]
+
+  @@map("Question")
+}
+
+// Alternativas da Questão
+model Alternative {
+  id          String   @id @default(uuid()) @db.NVarChar(255)
+  questionId  String   @db.NVarChar(255)
+  text        String   @db.NVarChar(1000)
+  createdAt   DateTime @default(now()) @db.DateTime2
+  updatedAt   DateTime @updatedAt @db.DateTime2
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@map("Alternative")
+}
+
+// Tentativas de Simulado
+model SimuladoAttempt {
+  id          String   @id @default(uuid()) @db.NVarChar(255)
+  userId      String   @db.NVarChar(255)
+  simuladoId  String   @db.NVarChar(255)
+  startedAt   DateTime @default(now()) @db.DateTime2
+  finishedAt  DateTime? @db.DateTime2
+  score       Float?   @db.Float
+  user        User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  simulado    Simulado @relation(fields: [simuladoId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  answers     Answer[]
+
+  @@map("SimuladoAttempt")
+}
+
+// Respostas das Questões
+model Answer {
+  id          String   @id @default(uuid()) @db.NVarChar(255)
+  attemptId   String   @db.NVarChar(255)
+  questionId  String   @db.NVarChar(255)
+  selectedAlternative Int @db.Int
+  isCorrect   Boolean
+  createdAt   DateTime @default(now()) @db.DateTime2
+  attempt     SimuladoAttempt @relation(fields: [attemptId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  question    Question @relation(fields: [questionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("Answer")
+} 
